@@ -3,13 +3,20 @@ import axios from 'axios'
 
 export default function Home() {
   const [users , setUsers] = useState([]);
+  // initial state is empty array and setUsers is a function to update the state
+  // [] is an array of users
 
   useEffect(() => {
     loadUsers()
-  },[]);
+    // [] is the dependency array which means that the function will only run once when the component loads
+    // [] stores the values of the variables that are used in the function
+    // if you want to run the function again when the component loads then you can remove the dependency array
+  },[]); // a dependency array is used to run the function only once when the component loads
+
+  
 
   const loadUsers =async() =>{
-      const result =await axios.get("http://localhost:8080/users")
+      const result = await axios.get("http://localhost:8080/users")
      setUsers(result.data)
   }
   return (
@@ -31,8 +38,8 @@ export default function Home() {
       users.map((user,index) =>(
       <tr>
       <th scope="row" key={index}>{index+1}</th>
-      <td>{user.name}</td>
       <td>{user.userName}</td>
+      <td>{user.name}</td>
       <td>{user.email}</td>
         <td>
           <button className={"btn btn-primary mx-2"}> View </button>

@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-
+//Entity is used to create a table in the database
 @Entity
 public class User {
     @Id
